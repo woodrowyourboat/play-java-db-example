@@ -1,0 +1,19 @@
+    @(shippers : List[Shipper])
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <h1> Shippers: @shippers.size()</h1>
+         <table border="1">
+            @for(shipper <- shippers) {
+                <tr>
+                    <td><a href="shipper/@shipper.getShipperId()">@shipper.getCompanyName()</a></td>
+                     <td>@shipper.getPhone()</td>
+                 </tr>
+            }
+        </table>
+    </body>
+    </html>

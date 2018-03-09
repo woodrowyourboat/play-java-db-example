@@ -1,0 +1,84 @@
+@(product : Product, categories : List[Category], suppliers : List[Supplier])
+@import helper._
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>@product.getProductName()</h1>
+<form method="POST">
+    Product Name: <input type="text" value="@product.getProductName()" name="productName">
+    <br>
+    <br>
+
+    Supplier ID: <input type="text" value="@product.getSupplierId()">
+    <br>
+    <br>
+
+Set Supplier:
+        <select name="supplierId">
+
+            @for(supplier <- suppliers){
+                @if(supplier.getSupplierId() == product.getSupplierId()){
+
+                    <option value="@supplier.getSupplierId()" selected="true">@supplier.getCompanyName()</option>
+                }else{
+                    <option value="@supplier.getSupplierId()">@supplier.getCompanyName()</option>
+                }
+            }
+
+        </select>
+
+    <br>
+    <br>
+
+    Category ID: <input type="text" value="@product.getCategoryId()">
+    <br>
+    <br>
+Set Category: 
+        <select name="categoryId">
+
+            @for(category <- categories){
+                @if(category.getCategoryId() == product.getCategoryId()){
+
+                    <option value="@category.getCategoryId()" selected="true">@category.getCategoryName()</option>
+                }else{
+                    <option value="@category.getCategoryId()">@category.getCategoryName()</option>
+                }
+            }
+
+    </select>
+
+    <br>
+    <br>
+
+
+    Quantity Per Unit: <input type="text" value="@product.getQuantityPerUnit()" name="quantityPerUnit">
+    <br>
+    <br>
+
+    Unit Price: <input type="text" value="@product.getUnitPrice()" name="unitPrice">
+    <br>
+    <br>
+
+    Units in Stock: <input type="text" value="@product.getUnitsInStock()" name="unitsInStock">
+    <br>
+    <br>
+
+    Units on Order: <input type="text" value="@product.getUnitsOnOrder()" name="unitsOnOrder">
+    <br>
+    <br>
+
+    Reorder Level: <input type="text" value="@product.getReorderLevel()" name="reorderLevel">
+    <br>
+    <br>
+
+    @CSRF.formField
+    <input type="Submit" value="Save Name">
+</form>
+
+</body>
+</html>
+

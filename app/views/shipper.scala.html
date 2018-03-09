@@ -1,0 +1,49 @@
+@(shipper : Shipper, regions : List[Region])
+@import helper._
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>@shipper.getCompanyName()</h1>
+<form method="POST">
+
+    Phone Number: <input type="text" value="@shipper.getPhone()" name="phone">
+    <br>
+    <br>
+    Cost Per Pound: <input type="text" value="@shipper.getCostPerPound()" name="costPerPound">
+    <br>
+    <br>
+    Year Founded: <input type="text" value="@shipper.getYearFounded()" name="yearFounded">
+    <br>
+    <br>
+    Date of First Package Shipped: <input type="date" value="@shipper.getFirstPackageShipped" name="firstPackageShipped">
+    <br>
+    <br>
+    Region ID:  <input type="text" value="@shipper.getRegionId">
+    <br>
+    <br>
+
+        <select name="regionId">
+
+            @for(region <- regions){
+                @if(region.getRegionId() == shipper.getRegionId()){
+
+                    <option value="@region.getRegionId()" selected="true">@region.getRegionDescription()</option>
+                }else{
+                    <option value="@region.getRegionId()">@region.getRegionDescription()</option>
+                }
+            }
+
+        </select>
+
+    <br>
+    <br>
+
+    @CSRF.formField
+    <input align="center" type="Submit" value="Save Changes">
+</form>
+</body>
+</html>

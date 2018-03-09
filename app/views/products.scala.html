@@ -1,0 +1,55 @@
+@(products : List[Product])
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1> Products: @products.size()</h1>
+
+
+<table border="1" bordercolor="black">
+    <caption><b>Product Table</b></caption>
+    <thead>
+
+        <tr align="center">
+
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Supplier ID</th>
+            <th>Category ID</th>
+            <th>Quantity Per Unit</th>
+            <th>Unit Price</th>
+            <th>Units in Stock</th>
+            <th>Units on Order</th>
+            <th>Reorder Levels</th>
+            <th>Discontinued?</th>
+        </tr>
+    </thead>
+
+    @for(product <- products) {
+    <tbody>
+
+        <tr border="1" bordercolor="black" align="center">
+
+            <td>@product.getProductId()</td>
+            <td><a href="product/@product.getProductId()">@product.getProductName()</a></td>
+            <td><a href="product/@product.getProductId()">@product.getSupplierId()</a></td>
+            <td><a href="product/@product.getProductId()">@product.getCategoryId()</a></td>
+            <td><a href="product/@product.getProductId()">@product.getQuantityPerUnit()</a></td>
+            <td><a href="product/@product.getProductId()">@product.getUnitPrice()</a></td>
+            <td><a href="product/@product.getProductId()">@product.getUnitsInStock()</a></td>
+            <td><a href="product/@product.getProductId()">@product.getUnitsOnOrder()</a></td>
+            <td><a href="product/@product.getProductId()">@product.getReorderLevel()</a></td>
+            <td>@product.isDiscontinued()</td>
+
+        </tr>
+    </tbody>
+    }
+</table>
+</body>
+</html>
